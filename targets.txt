@@ -1,0 +1,2 @@
+# Format: host[:port]
+minasidor.nationsgardarna.sebostad.blomsterfonden.se:443
