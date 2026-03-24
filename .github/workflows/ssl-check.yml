@@ -16,7 +16,7 @@ on:
         required: false
         default: "8"
   schedule:
-    - cron: "0 6 * * *"  # 06:00 UTC (justera för svensk tid)
+    - cron: "5 14 * * *"  #15:05 svensk tid
 
 env:
   # Valfritt: opt-in till Node 24 redan nu (relaterat till varningen du såg)
