@@ -38,3 +38,10 @@ jobs:
         run: |
           chmod +x scripts/check-ssl-expiry.sh
           scripts/check-ssl-expiry.sh targets.txt
+
+        - name: Notify Teams (Marketplace action)
+          if: env.SSL_WARN != '0' || env.SSL_CRIT != '0'
+          uses: neonidian/teams-notify-build-status@v4
+          with:
+            webhookUrl: ${{ secrets.TEAMS_WEBHOOK_URL }}
+            message: "SSL report: OK=${{ env.SSL_OK }}, WARN=${{ env.SSL_WARN }}, CRIT=${{ env.SSL_CRIT }}. See Actions Summary."
