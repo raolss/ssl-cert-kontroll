@@ -3,7 +3,7 @@ name: SSL check
 
 on:
   schedule:
-    - cron: "20 14 * * *"
+    - cron: "50 14 * * *"
   workflow_dispatch:
 
 jobs:
