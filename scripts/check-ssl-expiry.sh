@@ -70,17 +70,17 @@ while IFS= read -r line; do
   if (( days_left <= CRIT_DAYS )); then
     echo "::error::$host:$port – cert går ut om ${days_left} dagar ($enddate)"
     echo "| $host:$port | ❌ CRIT | $days_left | $enddate |" >> "$SUMMARY_FILE"
-    ((crit++))
+    ((++crit))
     exit_code=2
   elif (( days_left <= WARN_DAYS )); then
     echo "::warning::$host:$port – cert går ut om ${days_left} dagar ($enddate)"
     echo "| $host:$port | ⚠️ WARN | $days_left | $enddate |" >> "$SUMMARY_FILE"
-    ((warn++))
+    ((++warn))
     # exit_code lämnas som 0 om du inte vill faila på WARN
   else
     echo "$host:$port – OK ($days_left dagar kvar) exp: $enddate"
     echo "| $host:$port | ✅ OK | $days_left | $enddate |" >> "$SUMMARY_FILE"
-    ((ok++))
+    ((++ok))
   fi
 done < "$TARGETS_FILE"
 
